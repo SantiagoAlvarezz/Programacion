@@ -13,27 +13,37 @@ public class Program
 		Console.WriteLine("Ingrese el valor de c: ");
 		double c = double.Parse(Console.ReadLine());
 		//ecuaciones una con raiz Negativa, la otra con raiz positiva
-		double raizPositiva = (-b + (Math.Sqrt(Math.Pow(b, 2) - 4 * a * c))) / (2 * a);
-		double raizNegativa = (-b - (Math.Sqrt(Math.Pow(b, 2) - 4 * a * c))) / (2 * a);
+		double Discriminante = (b * b) - 4 * (a * c);
+		
 		// que me muestre la solucion a ambas raices
-		Console.WriteLine("x1: " + raizPositiva);
-		Console.WriteLine("x2: " + raizNegativa);
+		
+
+		
+
 		//ni me acuerdo que hice aquí, si las raices dan nros imaginarios/raros, no sé
-		if (raizNegativa.ToString() == "NaN" || raizPositiva.ToString() == "NaN")
+		if (Discriminante < 0)
 		{
 			Console.WriteLine("No es posible calcular la solucion. Tas bien(?).");
 
 		}
-		else if (raizPositiva != raizNegativa)
+		else if (Discriminante >0 )
 		{// Ambas son calculabes y correctas 
+			double raizPositiva = (-b + (Math.Sqrt(Discriminante)) / (2 * a));
+			double raizNegativa = (-b - (Math.Sqrt(Discriminante)) / (2 * a));
 			Console.WriteLine("Ambas soluciones son correctas :D");
+			Console.WriteLine("x1: " + raizPositiva);
+			Console.WriteLine("x2: " + raizNegativa);
+
 
 
 
 		}
 		else
 		{//tiene unica solución
+			double raizPositiva = (-b  / (2 * a));
 			Console.WriteLine("Unica Solución");
+			Console.WriteLine("x:" + raizPositiva);
+
 
 		}
 

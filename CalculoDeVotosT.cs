@@ -9,7 +9,9 @@ namespace Boolean_Operator
            //Ingreso de datos votos por a, b, blanco, anulados, total de la poblacion y quienes son mayores de edad xd
             Console.Write("Ingrese:\nVotos por a:\nVotos por b:\nVotos en blanco:\nVotos anulados:\nNúmero total de la población:\nPorcentaje de la población que es mayor de edad, Ingrese el valor sin  %:\n");
             //Declaramos variables por que toca 
-            int a = int.Parse(Console.ReadLine()), b = int.Parse(Console.ReadLine()), VotosBlancos = int.Parse(Console.ReadLine()), anulados = int.Parse(Console.ReadLine()), Poblacion = int.Parse(Console.ReadLine()), p = int.Parse(Console.ReadLine());
+            int a = int.Parse(Console.ReadLine()), b = int.Parse(Console.ReadLine()), VotosBlancos = int.Parse(Console.ReadLine()), anulados = int.Parse(Console.ReadLine()), Poblacion = int.Parse(Console.ReadLine()), p = double.Parse(Console.ReadLine());
+            double p = double.Parse(Console.ReadLine());
+            
             int mayoresDeEdad = (int)(p * 0.01 * Poblacion), totalVotantes = a + b + VotosBlancos + anulados;
             int abstencion = mayoresDeEdad - totalVotantes;
             //Booleanos

@@ -4,7 +4,7 @@
 {
      public static void Main(string[] args)
     {
-        double total = 0;
+        int total = 0;
         Console.Write("Ingrese el número de datos: ");// Le pedimos que ingrese la cantidad de datos que calculará
 
         //Declaramos las variables
@@ -31,7 +31,7 @@
             total += edad;
             i++;
         }
-        double promedio = total / n;
+        double promedio = (double)total / n;
         Console.Write("El promedio es: "+ promedio );
         Console.Write("\nEl mayor es: "+ nombreMax );
         Console.Write("\tCon : " + max);

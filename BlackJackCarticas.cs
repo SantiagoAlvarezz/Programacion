@@ -1,47 +1,71 @@
 ﻿using System;
 
 
-public class Program
+class Program
 {
-	public static void Main()
-	{
-		Random aleatorio = new Random();
-		int carta1 = 0, carta2 = 0, nuevacarta = 0, total = 0;
-		string continuar = "n";
+    static void Main(string[] args)
+    {
+        Random Aleatorio = new Random();
+        int Cartas, total = 0, jugadores, contador = 1, max = 0;
+
+        string seguir = "s", nombre = " ", nombreWin = " ";
+
+        Console.WriteLine("¿Cuantos jugarán: (min 2, max 5)");
+        jugadores = int.Parse(Console.ReadLine());
+        //permitir el nro de jugadores
 
 
-		carta1 = aleatorio.Next(1, 11);
-		carta2 = aleatorio.Next(1, 11);
-		total = carta1 + carta2;
-		Console.WriteLine("Carta 1 = " + carta1);
-		Console.WriteLine("Carta 2 = " + carta2);
-		Console.WriteLine("Total = " + total);
-
-		Console.Write("Desea tomar otra carta? (s/n): ");
-		continuar = Console.ReadLine();
+        while (jugadores < 2 || 5 < jugadores)
+        {
+            Console.WriteLine("Minimo 2, máximo 5. ¿Qué parte no entendió?, ingrese nuevamente el # de jugadores :)");
+            jugadores = int.Parse(Console.ReadLine());
+        }
 
 
-		while (continuar == "s")
-		{
-			nuevacarta = aleatorio.Next(1, 11); 
-			Console.WriteLine("Carta = " + nuevacarta);
-			total += nuevacarta;
-			Console.WriteLine("Total = " + total);
 
-			if (total >= 21)
-			{
-				Console.WriteLine("Eliminado");
-				continuar = "n";
-			}
+        //Inicia el juego
+        while (contador <= jugadores)
+        {
+            Console.WriteLine("\nJUGADOR {0}", contador);
+            Console.WriteLine("Ingrese su nombre: ");
+            nombre = Console.ReadLine();
+            Cartas = Aleatorio.Next(1, 11);
+            total += Cartas;
+            Console.WriteLine("\nCarta: {0}", Cartas);
 
-			else
-			{
-				Console.Write("Desea tomar otra carta? (s/n): ");
-				continuar = Console.ReadLine();
-			}
-		}
+            //ciclo x jugador
 
-		Console.WriteLine("Su total fue " + total + " puntos");
-		Console.WriteLine("Gracias por jugar.");
-	}
+            while (total < 22 && seguir == "s")
+            {
+                Cartas = Aleatorio.Next(1, 11);
+                total += Cartas;
+                Console.Write("Carta: {0}", Cartas);
+                Console.Write("  |  Total: {0}", total);
+
+                if (total > 21)
+                {
+                    Console.Write("\nHaz sido eliminado!");
+                    Console.Write("  Su total fue: {0}", total);
+                    total = 0;
+                    break;
+                }
+                else
+                {
+                    Console.Write("  |  Desea seguir jugando? (s/n)");
+                    if (total <= 22 && (max < total))
+                    {
+                        max = total;
+                        nombreWin = nombre;
+                    }
+                    if (Console.ReadLine() != "s")
+                    {
+                        total = 0;
+                        break;
+                    }
+                }
+            }
+            contador++;
+        }
+        Console.WriteLine("\nEl ganador es: {0}", nombreWin);
+    }
 }
